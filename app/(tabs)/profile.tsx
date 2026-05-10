@@ -8,7 +8,7 @@ import { Colors, Typography, Radius } from '@/constants/theme';
 import { GlassCard } from '@/components/ui/GlassCard';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
-import { UserCheck, BarChart2, Award, CreditCard, FileText, HelpCircle, ClipboardList, ShieldCheck, Bell, Activity, ChevronRight } from 'lucide-react-native';
+import { UserCheck, BarChart2, Award, CreditCard, FileText, HelpCircle, ClipboardList, ShieldCheck, Bell, Activity, ChevronRight, Edit3, Building2, Send } from 'lucide-react-native';
 
 export default function ProfileScreen() {
   const { user, logout } = useAppStore();
@@ -28,15 +28,18 @@ export default function ProfileScreen() {
   };
 
   const menuItems = [
+    { icon: <Edit3 size={20} color={Colors.primary} />, label: 'Edit Profile', route: '/edit-profile' },
     { icon: <UserCheck size={20} color={Colors.primary} />, label: 'Identity Verification (KYC)', route: '/kyc' },
     { icon: <BarChart2 size={20} color={Colors.primary} />, label: 'Trading Statistics', route: '/statistics' },
     { icon: <Award size={20} color={Colors.primary} />, label: 'Certificates', route: '/certificates' },
-    { icon: <CreditCard size={20} color={Colors.primary} />, label: 'Payouts & Withdrawals', route: '/payouts' },
+    { icon: <Send size={20} color={Colors.primary} />, label: 'Request Payout', route: '/request-payout' },
+    { icon: <CreditCard size={20} color={Colors.primary} />, label: 'Payout History', route: '/payouts' },
+    { icon: <Building2 size={20} color={Colors.primary} />, label: 'Bank Details', route: '/bank-details' },
     { icon: <FileText size={20} color={Colors.primary} />, label: 'Trading Rules', route: '/rules' },
     { icon: <HelpCircle size={20} color={Colors.primary} />, label: 'FAQ & Support', route: '/support' },
     { icon: <ClipboardList size={20} color={Colors.primary} />, label: 'Terms & Conditions', route: '/terms' },
     { icon: <ShieldCheck size={20} color={Colors.primary} />, label: 'Security & Password', route: '/security' },
-    { icon: <Bell size={20} color={Colors.primary} />, label: 'Notifications', route: '/notifications' },
+    { icon: <Bell size={20} color={Colors.primary} />, label: 'Notification Settings', route: '/notification-settings' },
   ];
 
   return (

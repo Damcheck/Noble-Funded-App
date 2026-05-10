@@ -78,72 +78,19 @@ export default function PayoutsScreen() {
         </View>
 
         {/* Request payout CTA */}
-        {fundedAccount && !showForm && (
-          <GlassCard style={styles.ctaCard}>
+        {fundedAccount && (
+          <TouchableOpacity onPress={() => router.push('/request-payout')} activeOpacity={0.85} style={{ marginBottom: 16 }}>
             <LinearGradient
-              colors={['rgba(13,148,136,0.2)', 'rgba(6,15,14,0.2)']}
-              style={styles.ctaInner}
+              colors={['#00f0ff', '#00d4d4']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.ctaBtn}
             >
-              <View>
-                <Text style={styles.ctaTitle}>Request a Payout</Text>
-                <Text style={styles.ctaSub}>
-                  Available from {fundedAccount.accountNumber}
-                </Text>
-              </View>
-              <Button
-                label="Request"
-                onPress={() => setShowForm(true)}
-                size="sm"
-                style={{ marginTop: 0 }}
-              />
+              <Text style={styles.ctaBtnText}>+ Request a Payout</Text>
             </LinearGradient>
-          </GlassCard>
+          </TouchableOpacity>
         )}
 
-        {/* Payout Form */}
-        {showForm && (
-          <GlassCard style={styles.formCard}>
-            <Text style={styles.formTitle}>Payout Request</Text>
-            <InputField
-              label="Amount (NGN)"
-              placeholder="e.g. 150000"
-              value={amount}
-              onChangeText={setAmount}
-              keyboardType="numeric"
-            />
-            <InputField
-              label="Bank Name"
-              placeholder="e.g. GTBank"
-              value={bankName}
-              onChangeText={setBankName}
-              autoCapitalize="words"
-            />
-            <InputField
-              label="Account Number"
-              placeholder="10-digit account number"
-              value={accountNum}
-              onChangeText={setAccountNum}
-              keyboardType="numeric"
-            />
-
-            <View style={styles.formBtns}>
-              <Button
-                label="Cancel"
-                onPress={() => setShowForm(false)}
-                variant="ghost"
-                size="md"
-                style={{ flex: 1 }}
-              />
-              <Button
-                label="Submit"
-                onPress={handleRequest}
-                loading={loading}
-                size="md"
-                style={{ flex: 1 }}
-              />
-            </View>
-          </GlassCard>
-        )}
 
         {/* Payout History */}
         <Text style={styles.sectionTitle}>Payout History</Text>
@@ -207,13 +154,8 @@ const styles = StyleSheet.create({
   summaryCard: { flex: 1, alignItems: 'center' },
   summaryValue: { fontSize: Typography.lg, fontWeight: Typography.black, color: Colors.textPrimary, marginBottom: 4 },
   summaryLabel: { fontSize: Typography.xs, color: Colors.textMuted },
-  ctaCard: { marginBottom: 16 },
-  ctaInner: { borderRadius: Radius.lg, padding: 18, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  ctaTitle: { fontSize: Typography.base, fontWeight: Typography.bold, color: Colors.textPrimary },
-  ctaSub: { fontSize: Typography.xs, color: Colors.textSecondary, marginTop: 2 },
-  formCard: { marginBottom: 20 },
-  formTitle: { fontSize: Typography.base, fontWeight: Typography.semibold, color: Colors.textPrimary, marginBottom: 16 },
-  formBtns: { flexDirection: 'row', gap: 12, marginTop: 8 },
+  ctaBtn: { paddingVertical: 16, borderRadius: 50, alignItems: 'center', justifyContent: 'center', shadowColor: '#00f0ff', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.5, shadowRadius: 20, elevation: 12 },
+  ctaBtnText: { color: '#041c20', fontSize: 16, fontWeight: '700' },
   sectionTitle: { fontSize: Typography.base, fontWeight: Typography.semibold, color: Colors.textPrimary, marginBottom: 12 },
   payoutCard: { marginBottom: 12 },
   payoutTop: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 },
